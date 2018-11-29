@@ -1,5 +1,9 @@
 /**
- * Validates that an object is in the proper form to be considered a resource collection.
+ * A resource collection describes the resources and associated operations in a system.
+ * This is an optional component and could be used to validate role definitions, or to build UIs for
+ * administrators to define roles within the system.
+ *
+ * This function validates that an object is in the proper form to be considered a resource collection.
  *
  * @example
  * const validateResourceCollection = require('validateResourceCollection')

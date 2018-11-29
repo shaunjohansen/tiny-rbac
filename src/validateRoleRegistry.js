@@ -1,7 +1,9 @@
 const validateResourceCollection = require('./validateResourceCollection.js')
 
 /**
- * Validates that an object is in the proper form to be considered a role registry.
+ * A role registry object describes a the set of permitted operations on resources per role.
+ *
+ * This function verifies that an object is in the proper form to be considered a role registry.
  *
  * @example
  * const validateRoleRegistry = require('validateRoleRegistry')

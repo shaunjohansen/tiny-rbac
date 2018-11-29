@@ -1,7 +1,7 @@
 const validateRoleRegistry = require('./validateRoleRegistry.js')
 
 /**
- * A mapping between a user and an activated subset of roles that are assigned to the user.
+ * Joins a list of roles into a queryable object. This would most commonly be used with the set of roles associated with an authenticated user.
  *
  * @example
  * const rbac = require('./index.js')
