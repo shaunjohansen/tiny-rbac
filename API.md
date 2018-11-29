@@ -4,14 +4,15 @@
 
 -   [Session][1]
     -   [Parameters][2]
-    -   [can][3]
-        -   [Parameters][4]
--   [validateResourceCollection][5]
-    -   [Parameters][6]
-    -   [Examples][7]
--   [validateRoleRegistry][8]
-    -   [Parameters][9]
-    -   [Examples][10]
+    -   [Examples][3]
+    -   [can][4]
+        -   [Parameters][5]
+-   [validateResourceCollection][6]
+    -   [Parameters][7]
+    -   [Examples][8]
+-   [validateRoleRegistry][9]
+    -   [Parameters][10]
+    -   [Examples][11]
 
 ## Session
 
@@ -19,9 +20,20 @@ A mapping between a user and an activated subset of roles that are assigned to t
 
 ### Parameters
 
--   `roleRegistry` **[object][11]** An object defining all the roles in the system, or at least those required by rolesList.
--   `rolesList` **[array][12]** Array of roles to construct this session with.
--   `resourceCollection` **[object][11]** Resource collection used to validate roleRegistry and resource operations as they are queries (optional).
+-   `roleRegistry` **[object][12]** An object defining all the roles in the system, or at least those required by rolesList.
+-   `rolesList` **[array][13]** Array of roles to construct this session with.
+-   `resourceCollection` **[object][12]** Resource collection used to validate roleRegistry and resource operations as they are queries (optional).
+
+### Examples
+
+```javascript
+const rbac = require('./index.js')
+
+const session = new rbac.Session(roleRegistry(), [ 'Guest' ], resourceCollection())
+if (!session.can('update', 'Documents')) {
+  throw new UnauthorizedError('Guests cannot update documents!')
+}
+```
 
 ### can
 
@@ -38,7 +50,7 @@ Validates that an object is in the proper form to be considered a resource colle
 
 ### Parameters
 
--   `resourceCollection` **[object][11]** Resource collection object to validate.
+-   `resourceCollection` **[object][12]** Resource collection object to validate.
 
 ### Examples
 
@@ -54,7 +66,7 @@ validateResourceCollection({
 })
 ```
 
--   Throws **[Error][13]** throws error when validation fails.
+-   Throws **[Error][14]** throws error when validation fails.
 
 ## validateRoleRegistry
 
@@ -62,8 +74,8 @@ Validates that an object is in the proper form to be considered a role registry.
 
 ### Parameters
 
--   `roleRegistry` **[object][11]** Role registry object to validate.
--   `resourceCollection` **[object][11]** Resource collection to validate permissions against (optional).
+-   `roleRegistry` **[object][12]** Role registry object to validate.
+-   `resourceCollection` **[object][12]** Resource collection to validate permissions against (optional).
 
 ### Examples
 
@@ -86,30 +98,32 @@ validateRoleRegistry({
 })
 ```
 
--   Throws **[Error][13]** throws error when validation fails.
+-   Throws **[Error][14]** throws error when validation fails.
 
 [1]: #session
 
 [2]: #parameters
 
-[3]: #can
+[3]: #examples
 
-[4]: #parameters-1
+[4]: #can
 
-[5]: #validateresourcecollection
+[5]: #parameters-1
 
-[6]: #parameters-2
+[6]: #validateresourcecollection
 
-[7]: #examples
+[7]: #parameters-2
 
-[8]: #validateroleregistry
+[8]: #examples-1
 
-[9]: #parameters-3
+[9]: #validateroleregistry
 
-[10]: #examples-1
+[10]: #parameters-3
 
-[11]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[11]: #examples-2
 
-[12]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+[12]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[13]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error
+[13]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
+
+[14]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error

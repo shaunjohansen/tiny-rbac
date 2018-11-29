@@ -3,6 +3,14 @@ const validateRoleRegistry = require('./validateRoleRegistry.js')
 /**
  * A mapping between a user and an activated subset of roles that are assigned to the user.
  *
+ * @example
+ * const rbac = require('./index.js')
+ *
+ * const session = new rbac.Session(roleRegistry(), [ 'Guest' ], resourceCollection())
+ * if (!session.can('update', 'Documents')) {
+ *   throw new UnauthorizedError('Guests cannot update documents!')
+ * }
+ *
  * @param {object} roleRegistry An object defining all the roles in the system, or at least those required by rolesList.
  * @param {array} rolesList Array of roles to construct this session with.
  * @param {object} resourceCollection Resource collection used to validate roleRegistry and resource operations as they are queries (optional).
