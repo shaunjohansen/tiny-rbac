@@ -8,7 +8,7 @@
   "scripts": {
     "eslint": "eslint src",
     "test": "npm run eslint && mocha src/*.test.js",
-    "build-docs": "npx documentation build src --github --format md --output API.md"
+    "build-docs": "npx documentation build src --format md --output API.md"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",

@@ -15,19 +15,15 @@
 
 ## Session
 
-[src/Session.js:10-88][11]
-
 A mapping between a user and an activated subset of roles that are assigned to the user.
 
 ### Parameters
 
--   `roleRegistry` **[object][12]** An object defining all the roles in the system, or at least those required by rolesList.
--   `rolesList` **[array][13]** Array of roles to construct this session with.
--   `resourceCollection` **[object][12]** Resource collection used to validate roleRegistry and resource operations as they are queries (optional).
+-   `roleRegistry` **[object][11]** An object defining all the roles in the system, or at least those required by rolesList.
+-   `rolesList` **[array][12]** Array of roles to construct this session with.
+-   `resourceCollection` **[object][11]** Resource collection used to validate roleRegistry and resource operations as they are queries (optional).
 
 ### can
-
-[src/Session.js:67-87][14]
 
 Inquire if an operation is permitted on a resource in the context of this session.
 
@@ -38,13 +34,11 @@ Inquire if an operation is permitted on a resource in the context of this sessio
 
 ## validateResourceCollection
 
-[src/validateResourceCollection.js:18-37][15]
-
 Validates that an object is in the proper form to be considered a resource collection.
 
 ### Parameters
 
--   `resourceCollection` **[object][12]** Resource collection object to validate.
+-   `resourceCollection` **[object][11]** Resource collection object to validate.
 
 ### Examples
 
@@ -60,18 +54,16 @@ validateResourceCollection({
 })
 ```
 
--   Throws **[Error][16]** throws error when validation fails.
+-   Throws **[Error][13]** throws error when validation fails.
 
 ## validateRoleRegistry
-
-[src/validateRoleRegistry.js:28-70][17]
 
 Validates that an object is in the proper form to be considered a role registry.
 
 ### Parameters
 
--   `roleRegistry` **[object][12]** Role registry object to validate.
--   `resourceCollection` **[object][12]** Resource collection to validate permissions against (optional).
+-   `roleRegistry` **[object][11]** Role registry object to validate.
+-   `resourceCollection` **[object][11]** Resource collection to validate permissions against (optional).
 
 ### Examples
 
@@ -94,7 +86,7 @@ validateRoleRegistry({
 })
 ```
 
--   Throws **[Error][16]** throws error when validation fails.
+-   Throws **[Error][13]** throws error when validation fails.
 
 [1]: #session
 
@@ -116,16 +108,8 @@ validateRoleRegistry({
 
 [10]: #examples-1
 
-[11]: https://git@github.com/:shaunjohansen/tiny-rbac/blob/d21c977f4ae3aab20b7d87c9091d34e131df6941/src/Session.js#L10-L88 "Source code on GitHub"
+[11]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
 
-[12]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object
+[12]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
 
-[13]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array
-
-[14]: https://git@github.com/:shaunjohansen/tiny-rbac/blob/d21c977f4ae3aab20b7d87c9091d34e131df6941/src/Session.js#L67-L87 "Source code on GitHub"
-
-[15]: https://git@github.com/:shaunjohansen/tiny-rbac/blob/d21c977f4ae3aab20b7d87c9091d34e131df6941/src/validateResourceCollection.js#L18-L37 "Source code on GitHub"
-
-[16]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error
-
-[17]: https://git@github.com/:shaunjohansen/tiny-rbac/blob/d21c977f4ae3aab20b7d87c9091d34e131df6941/src/validateRoleRegistry.js#L28-L70 "Source code on GitHub"
+[13]: https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error
