@@ -1,0 +1,21 @@
+{
+  "name": "tiny-rbac",
+  "description": "A tiny implementation of the ANSI RBAC spec (Core and Hierarchical)",
+  "version": "0.0.0",
+  "author": "Shaun Johansen",
+  "license": "ISC",
+  "main": "src/index.js",
+  "scripts": {
+    "eslint": "eslint src",
+    "test": "npm run eslint && mocha src/*.test.js"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "chai": "^4.2.0",
+    "documentation": "^8.1.2",
+    "esdoc-standard-plugin": "^1.0.0",
+    "eslint": "^5.9.0",
+    "mocha": "^5.2.0",
+    "nodemon": "^1.18.7"
+  }
+}
