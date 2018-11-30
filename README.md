@@ -17,7 +17,7 @@ When a user signs in to an application a "session" is constructed that combines 
 This library provides a helper function for combining roles into sessions, allowing a simple mechanism for permission checking. For example:
 
 ```javascript
-const rbac = require('./index.js')
+const rbac = require('tiny-rbac')
 
 // Use the optional resource collection to identify the master list of
 // all resources and operations available.
