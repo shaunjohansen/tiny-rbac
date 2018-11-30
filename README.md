@@ -15,9 +15,102 @@ This library provides a helper function for combining roles into sessions, allow
 ```javascript
 const rbac = require('./index.js')
 
-const session = new rbac.Session(roleRegistry(), [ 'Guest' ], resourceCollection())
+// Use the optional resource collection to identify the master list of all resources and operations
+// available.
+//
+// In this example we have two resources: Users and Documents.
+const resourceCollection = {
+  Users: {
+    operations: {
+      create: true,
+      read: true,
+      update: true,
+      delete: true,
+    },
+  },
+  Documents: {
+    operations: {
+      create: true,
+      read: true,
+      update: true,
+      delete: true,
+    },
+  },
+}
+
+// Validate the structure of a resource collection - this function throws on structural errors.
+rbac.validateResourceCollection(resourceCollection)
+
+// The role registry associates permission to perform operations on resources with roles. As well,
+// role hierarchies are identified with the `inheritsFrom` attribute.
+//
+// In this example, we defined three roles: Guest, Employee and Admin.
+// Employee inherits from Guest, meaning an Employee can do all the things Guest can do plus the
+// other permissions granted in the Employee section.
+// Likewise, Admin inherits from Employee, and because Employee inherits from Guest, so does Admin.
+const roleRegistry = {
+  Guest: {
+    resources: {
+      Documents: {
+        operations: {
+          read: true,
+        },
+      },
+    },
+  },
+  Employee: {
+    inheritsFrom: [ 'Guest' ],
+    resources: {
+      Users: {
+        operations: {
+          read: true,
+        },
+      },
+      Documents: {
+        operations: {
+          create: true,
+          update: true,
+          delete: true,
+        },
+      },
+    },
+  },
+  Admin: {
+    inheritsFrom: [ 'Employee' ],
+    resources: {
+      Users: {
+        operations: {
+          create: true,
+          update: true,
+          delete: true,
+        },
+      },
+    },
+  },
+}
+
+// Validate the structure of a role registry - this function throws on structural errors.
+//
+// If the optional resource collection parameter is supplied all permission grants on resources
+// are checked to see if they also exist in the master list; if they do not exist in the resource
+// collection an error is thrown.
+rbac.validateRoleRegistry(roleRegistry, resourceCollection)
+
+// A session is calculated from the role registry and a list of roles associated with a user.
+//
+// The resource collection parameter is optional, and is used to check the values passed to the
+// `session.can` function. This can identify spelling mistakes while coding your application.
+const session = new rbac.Session(roleRegistry, [ 'Guest' ], resourceCollection)
+
+// The `session.can` function provides a simple and consistent mechanism to protect functionality
+// throughout the system.
+//
+// On the server this should be used to protect endpoints from unauthorized access.
+//
+// On the client this can be used to disable or hide UI elements that are not accessible to the
+// signed in user.
 if (!session.can('update', 'Documents')) {
-  throw new UnauthorizedError('Guests cannot update documents!')
+  throw new UnauthorizedError('does not have access to update documents')
 }
 ```
 
