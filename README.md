@@ -1,5 +1,9 @@
 # tiny-rbac
 
+|Travis CI|
+|:-:|
+|[![Build Status](https://travis-ci.org/shaunjohansen/tiny-rbac.svg?branch=master)](https://travis-ci.org/shaunjohansen/tiny-rbac)|
+
 A role-based access control (RBAC) library for JavaScript - client and server.
 
 The intent with this library is to define a simple, straightforward, immediate mode implementation of ANSI RBAC using plain JavaScript objects. Storage of the models is outside the scope of this library. In UNIX tradition, this allows us to do one thing well.
