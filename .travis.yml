@@ -1,6 +1,3 @@
 language: node_js
-
-install:
-- npm install
-script:
-- npm test
+node_js:
+  - "10"
