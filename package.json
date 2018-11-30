@@ -1,7 +1,7 @@
 {
   "name": "tiny-rbac",
   "description": "A tiny implementation of the ANSI RBAC spec (Core and Hierarchical)",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "Shaun Johansen",
   "license": "ISC",
   "main": "src/index.js",
